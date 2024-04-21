@@ -46,7 +46,6 @@ app.use('*', async (req, res) => {
       template = templateHtml;
       render = (await import('./dist/server/entry-server.js')).render;
     }
-
     const rendered = await render(url, ssrManifest);
 
     const html = template
