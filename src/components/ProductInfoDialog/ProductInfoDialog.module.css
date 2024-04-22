@@ -18,7 +18,7 @@
   display: flex;
   align-items: flex-start;
   gap: 80px;
-  padding: 70px 100px 34px;
+  padding: 50px 100px;
 }
 
 .form-root {
@@ -62,6 +62,7 @@
 }
 
 .textarea {
+  min-height: 100px;
   border-radius: 3px;
   border: 1px solid #d1d5db;
   background: #fff;

@@ -119,8 +119,6 @@ function ProductInfoDialog() {
               <textarea className={classes.textarea} placeholder="Enter the description of the book" />
             </Form.Control>
           </Form.Field>
-
-          <Form.Submit />
         </Form.Root>
       </div>
     </BaseDialog>
