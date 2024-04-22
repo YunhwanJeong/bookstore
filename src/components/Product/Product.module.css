@@ -1,11 +1,14 @@
-.product__link {
-  display: block;
+.product-wrapper {
   padding: 20px 60px;
-  cursor: pointer;
 }
 
-.product__link:hover {
-  background: #fffbed;
+.product {
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.product:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .product__category {
@@ -26,4 +29,8 @@
   font-size: 16px;
   font-weight: 600;
   margin: 14px 0px 0px 0px;
+}
+
+.bottom-add-on {
+  margin: 10px 0px 0px 0px;
 }

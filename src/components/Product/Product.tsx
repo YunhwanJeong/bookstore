@@ -1,21 +1,23 @@
 import classes from './Product.module.css';
 
-interface Props {
+interface IProps {
   img: string;
   name: string;
   price: number;
   category: string;
+  bottomAddOn?: React.ReactNode;
 }
 
-function Product({ img, name, price, category }: Props) {
+function Product({ img, name, price, category, bottomAddOn }: IProps) {
   return (
-    <li className={classes.product}>
-      <a className={classes.product__link}>
+    <li className={classes.productWrapper}>
+      <div className={classes.product}>
         <img src={img} alt="product thumbnail" />
         <div className={classes.product__category}>{category}</div>
         <h3 className={classes.product__name}>{name}</h3>
         <div className={classes.product__price}>{price}</div>
-      </a>
+      </div>
+      {bottomAddOn && <div className={classes.bottomAddOn}>{bottomAddOn}</div>}
     </li>
   );
 }
