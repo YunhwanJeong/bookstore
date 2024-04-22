@@ -4,13 +4,7 @@
 
 .product {
   cursor: pointer;
-  transition: box-shadow 0.2s ease-in-out;
 }
-
-.product:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
 .product__category {
   color: #424242;
   font-size: 12px;
@@ -31,6 +25,7 @@
   margin: 14px 0px 0px 0px;
 }
 
-.bottom-add-on {
-  margin: 10px 0px 0px 0px;
+.divider {
+  border-bottom: 1px solid #d6d6d6;
+  margin: 14px 0px;
 }
