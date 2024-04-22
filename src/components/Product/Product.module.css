@@ -6,6 +6,7 @@
 .product {
   cursor: pointer;
 }
+
 .product__category {
   color: #424242;
   font-size: 12px;
