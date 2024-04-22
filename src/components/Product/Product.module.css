@@ -1,12 +1,11 @@
-.product {
+.product__link {
+  display: block;
   padding: 20px 60px;
+  cursor: pointer;
 }
 
-.product__link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  cursor: pointer;
+.product__link:hover {
+  background: #fffbed;
 }
 
 .product__category {
