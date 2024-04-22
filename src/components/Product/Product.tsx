@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import classes from './Product.module.css';
 
 interface IProps {
@@ -5,7 +6,7 @@ interface IProps {
   name: string;
   price: number;
   category: string;
-  bottomAddOn?: React.ReactNode;
+  bottomAddOn?: ReactNode;
 }
 
 function Product({ img, name, price, category, bottomAddOn }: IProps) {

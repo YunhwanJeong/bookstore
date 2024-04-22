@@ -1,5 +1,5 @@
 import bookThumbnail from '@/assets/book.png';
-import { IProduct } from '@/model';
+import type { IProduct } from '@/model';
 import { v4 as uuidv4 } from 'uuid';
 
 function useBooks() {

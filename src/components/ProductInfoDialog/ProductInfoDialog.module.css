@@ -1,0 +1,15 @@
+.trigger-button {
+  cursor: pointer;
+  border-radius: 30px;
+  background: #191921;
+  display: flex;
+  padding: 16px 26px;
+  place-items: center;
+  gap: 5px;
+}
+
+.trigger-button > span {
+  color: #fcfbf6;
+  font-size: 15px;
+  font-weight: 500;
+}

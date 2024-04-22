@@ -1,4 +1,4 @@
-import plusLogo from '@/assets/icons/plus.svg';
+import { ProductInfoDialog } from '@/components';
 import classes from './Header.module.css';
 
 function Header() {
@@ -7,10 +7,7 @@ function Header() {
       <a href="/">
         <h1>Bookstore</h1>
       </a>
-      <button>
-        <img src={plusLogo} alt="plus logo" />
-        <span>Add a Book</span>
-      </button>
+      <ProductInfoDialog />
     </header>
   );
 }

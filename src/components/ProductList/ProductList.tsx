@@ -1,10 +1,11 @@
 import { Product } from '@/components';
-import { IProduct } from '@/model';
+import type { IProduct } from '@/model';
+import type { ReactNode } from 'react';
 import classes from './ProductList.module.css';
 
 interface IProps {
   products: IProduct[];
-  bottomAddOn?: React.ReactNode;
+  bottomAddOn?: ReactNode;
 }
 
 function ProductList({ products, bottomAddOn }: IProps) {
