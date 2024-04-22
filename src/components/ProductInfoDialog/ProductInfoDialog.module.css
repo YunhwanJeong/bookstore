@@ -79,59 +79,10 @@
   background: #fff;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
   color: #191921;
   font-size: 14px;
 }
 
 .select-trigger[data-placeholder] {
   color: #757575;
-}
-
-.select-content {
-  overflow: hidden;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow:
-    0px 10px 38px -10px rgba(22, 23, 24, 0.35),
-    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
-}
-
-.select-scroll-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 25px;
-  background-color: white;
-  cursor: default;
-}
-
-.select-view-port {
-  padding: 5px;
-}
-
-.select-item {
-  position: relative;
-  font-size: 14px;
-  color: #191921;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  padding: 10px 25px;
-  user-select: none;
-}
-
-.select-item[data-highlighted] {
-  outline: none;
-  background-color: darkgray;
-  color: white;
-}
-
-.select-item-indicator {
-  position: absolute;
-  left: 0;
-  width: 25px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }

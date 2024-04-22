@@ -1,11 +1,14 @@
 import bookThumbnail from '@/assets/book.png';
-import { BaseDialog } from '@/components';
+import { BaseDialog, BaseSelect } from '@/components';
+import { useCategoryGroups } from '@/hooks';
 import * as Form from '@radix-ui/react-form';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon, PlusIcon } from '@radix-ui/react-icons';
+import { ChevronDownIcon, PlusIcon } from '@radix-ui/react-icons';
 import * as Select from '@radix-ui/react-select';
 import classes from './ProductInfoDialog.module.css';
 
 function ProductInfoDialog() {
+  const { categoryGroups } = useCategoryGroups();
+
   return (
     <BaseDialog
       trigger={
@@ -49,68 +52,17 @@ function ProductInfoDialog() {
               </Form.Message>
             </div>
             <Form.Control asChild>
-              <Select.Root>
-                <Select.Trigger className={classes.selectTrigger} aria-label="Book's genre">
-                  <Select.Value placeholder="Select category" />
-                  <Select.Icon>
-                    <ChevronDownIcon />
-                  </Select.Icon>
-                </Select.Trigger>
-                <Select.Portal>
-                  <Select.Content className={classes.selectContent}>
-                    <Select.ScrollUpButton className={classes.selectScrollButton}>
-                      <ChevronUpIcon />
-                    </Select.ScrollUpButton>
-                    <Select.Viewport className={classes.selectViewPort}>
-                      <Select.Item className={classes.selectItem} value="Mystery">
-                        <Select.ItemText>Mystery</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item className={classes.selectItem} value="Suspense">
-                        <Select.ItemText>Suspense</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item className={classes.selectItem} value="Thriller">
-                        <Select.ItemText>Thriller</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item className={classes.selectItem} value="Romance">
-                        <Select.ItemText>Romance</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item className={classes.selectItem} value="Manga">
-                        <Select.ItemText>Manga</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item className={classes.selectItem} value="Self-Help">
-                        <Select.ItemText>Self-Help</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item className={classes.selectItem} value="Literary Fiction">
-                        <Select.ItemText>Literary Fiction</Select.ItemText>
-                        <Select.ItemIndicator className={classes.selectItemIndicator}>
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                    </Select.Viewport>
-                    <Select.ScrollDownButton className={classes.selectScrollButton}>
+              <BaseSelect
+                trigger={
+                  <button className={classes.selectTrigger} aria-label="Book's genre">
+                    <Select.Value placeholder="Select category" />
+                    <Select.Icon>
                       <ChevronDownIcon />
-                    </Select.ScrollDownButton>
-                  </Select.Content>
-                </Select.Portal>
-              </Select.Root>
+                    </Select.Icon>
+                  </button>
+                }
+                groups={categoryGroups}
+              ></BaseSelect>
             </Form.Control>
           </Form.Field>
           <Form.Field className={classes.formField} name="Description">
