@@ -56,6 +56,22 @@
   color: #fcfbf6;
 }
 
+.button:hover {
+  background: #f3f4f6;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 2px lightgray;
+}
+
+.button.primary:hover {
+  background: black;
+}
+
+.button.primary:focus {
+  box-shadow: 0 0 0 2px lightgray;
+}
+
 .icon-button {
   cursor: pointer;
   font-family: inherit;
@@ -73,11 +89,11 @@
 }
 
 .icon-button:hover {
-  background-color: #f3f4f6;
+  background-color: lightgray;
 }
 
 .icon-button:focus {
-  box-shadow: 0 0 0 2px #f3f4f6;
+  box-shadow: 0 0 0 2px lightgray;
 }
 
 @keyframes overlayShow {
