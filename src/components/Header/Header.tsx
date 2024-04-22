@@ -1,4 +1,4 @@
-import plusLogo from '@assets/plus.svg';
+import plusLogo from '@/assets/icons/plus.svg';
 import classes from './Header.module.css';
 
 function Header() {
