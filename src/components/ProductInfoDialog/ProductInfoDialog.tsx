@@ -18,10 +18,11 @@ function ProductInfoDialog() {
         </button>
       }
       title={'Add a Book'}
+      formId="ProductInfoDialogForm"
     >
       <div className={classes.formWrapper}>
         <img src={bookThumbnail} alt="product thumbnail" />
-        <Form.Root className={classes.formRoot}>
+        <Form.Root className={classes.formRoot} id="ProductInfoDialogForm">
           <Form.Field className={classes.formField} name="Name">
             <div className={classes.formLabelWrapper}>
               <Form.Label className={classes.formLabel}>Name</Form.Label>

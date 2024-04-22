@@ -9,9 +9,10 @@ interface IProps {
   children?: ReactNode;
   cancelLabel?: string;
   okLabel?: string;
+  formId?: string;
 }
 
-function BaseDialog({ trigger, title, children, cancelLabel = 'Cancel', okLabel = 'Save' }: IProps) {
+function BaseDialog({ trigger, title, children, cancelLabel = 'Cancel', okLabel = 'Save', formId }: IProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
@@ -25,7 +26,9 @@ function BaseDialog({ trigger, title, children, cancelLabel = 'Cancel', okLabel 
               <button className={classes.button}>{cancelLabel}</button>
             </Dialog.Close>
             <Dialog.Close asChild>
-              <button className={`${classes.button} ${classes.primary}`}>{okLabel}</button>
+              <button className={`${classes.button} ${classes.primary}`} form={formId}>
+                {okLabel}
+              </button>
             </Dialog.Close>
           </div>
           <Dialog.Close asChild>
