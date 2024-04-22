@@ -1,3 +1,30 @@
 .product {
   padding: 20px 60px;
 }
+
+.product__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+}
+
+.product__category {
+  color: #424242;
+  font-size: 12px;
+  margin: 18px 0px 0px 0px;
+}
+
+.product__name {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 6px 0px 0px 0px;
+}
+
+.product__price {
+  color: #ff7679;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 14px 0px 0px 0px;
+}
