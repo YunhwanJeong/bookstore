@@ -1,5 +1,5 @@
 import bookThumbnail from '@/assets/book.png';
-import { BaseDialog, BaseSelect } from '@/components';
+import { BaseDialog, BaseSelect } from '@/common/components';
 import { useCategoryGroups } from '@/hooks';
 import * as Form from '@radix-ui/react-form';
 import { ChevronDownIcon, PlusIcon } from '@radix-ui/react-icons';
