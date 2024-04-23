@@ -5,6 +5,13 @@
 
 .product {
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product__image {
+  align-self: center;
 }
 
 .product__category {

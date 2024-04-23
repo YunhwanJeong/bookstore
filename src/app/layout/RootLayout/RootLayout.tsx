@@ -1,4 +1,4 @@
-import MainPage from '../../../MainPage';
+import { MainPage } from '@/pages';
 import { Header } from '../Header';
 import './RootLayout.css';
 

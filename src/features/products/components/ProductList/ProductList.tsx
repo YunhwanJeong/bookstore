@@ -1,5 +1,5 @@
-import { Product } from '@/components';
-import type { IProduct } from '@/model';
+import { Product } from '@/features/products/components';
+import type { IProduct } from '@/features/products/model';
 import type { ReactNode } from 'react';
 import classes from './ProductList.module.css';
 

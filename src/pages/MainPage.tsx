@@ -1,5 +1,5 @@
-import { ProductDeleteButton, ProductList } from '@/components';
-import { useBooks } from '@/hooks';
+import { ProductDeleteButton, ProductInfoDialog, ProductList } from '@/features/products/components';
+import { useBooks } from '@/features/products/hooks';
 import classes from './MainPage.module.css';
 
 function MainPage() {
@@ -7,6 +7,9 @@ function MainPage() {
 
   return (
     <section className={classes.pageWrapper}>
+      <div className={classes.pageActions}>
+        <ProductInfoDialog />
+      </div>
       <ProductList products={books} bottomAddOn={<ProductDeleteButton />} />
     </section>
   );

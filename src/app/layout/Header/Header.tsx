@@ -1,4 +1,4 @@
-import { ProductInfoDialog } from '@/components';
+import profileImage from '@/assets/profile.png';
 import classes from './Header.module.css';
 
 function Header() {
@@ -7,7 +7,7 @@ function Header() {
       <a href="/">
         <h1>Bookstore</h1>
       </a>
-      <ProductInfoDialog />
+      <img className={classes.profileImage} src={profileImage}></img>
     </header>
   );
 }
