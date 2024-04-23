@@ -1,5 +1,5 @@
 import { Header } from '@/components';
-import MainPage from './MainPage';
+import MainPage from '../MainPage';
 import './RootLayout.css';
 
 function RootLayout() {
