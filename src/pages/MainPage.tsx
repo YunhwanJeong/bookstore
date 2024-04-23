@@ -1,16 +1,17 @@
+import { useAppSelector } from '@/app/store/hooks';
 import { ProductDeleteButton, ProductInfoDialog, ProductList } from '@/features/products/components';
-import { useBooks } from '@/features/products/hooks';
+import { selectProducts } from '@/features/products/slices';
 import classes from './MainPage.module.css';
 
 function MainPage() {
-  const { books } = useBooks();
+  const products = useAppSelector(selectProducts);
 
   return (
     <section className={classes.pageWrapper}>
       <div className={classes.pageActions}>
         <ProductInfoDialog />
       </div>
-      <ProductList products={books} bottomAddOn={<ProductDeleteButton />} />
+      <ProductList products={products} bottomAddOn={<ProductDeleteButton />} />
     </section>
   );
 }
