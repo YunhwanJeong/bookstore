@@ -1,16 +1,16 @@
 import { makeStore, type AppStore } from '@/app/store';
 import { DUMMY_BOOKS } from './constants';
 import type { ProductsSliceState } from './productsSlice';
-import { productsSlice } from './productsSlice';
+import { deleteProduct, productsSlice, selectProducts } from './productsSlice';
 
 interface LocalTestContext {
   store: AppStore;
 }
 
-describe('products reducer', (it) => {
+describe<LocalTestContext>('products reducer', (it) => {
   beforeEach<LocalTestContext>((context) => {
     const initialState: ProductsSliceState = {
-      value: [
+      products: [
         ...DUMMY_BOOKS,
         {
           id: 'test-id',
@@ -29,7 +29,15 @@ describe('products reducer', (it) => {
 
   it('should handle initial state', () => {
     expect(productsSlice.reducer(undefined, { type: 'unknown' })).toStrictEqual({
-      value: DUMMY_BOOKS,
+      products: DUMMY_BOOKS,
     });
+  });
+
+  it('should handle delete product', ({ store }) => {
+    expect(selectProducts(store.getState())).toHaveLength(9);
+
+    store.dispatch(deleteProduct('test-id'));
+
+    expect(selectProducts(store.getState())).toHaveLength(8);
   });
 });
