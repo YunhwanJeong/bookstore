@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'url';
 import { defineConfig } from 'vite';
@@ -12,5 +13,14 @@ export default defineConfig({
     modules: {
       localsConvention: 'camelCase',
     },
+  },
+  server: {
+    open: true,
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'src/app/setupTests.ts',
+    mockReset: true,
   },
 });
