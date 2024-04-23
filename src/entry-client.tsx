@@ -1,4 +1,4 @@
-import App from '@/app/App';
+import { App } from '@/app';
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
