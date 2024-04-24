@@ -7,10 +7,10 @@ interface LocalTestContext {
   store: AppStore;
 }
 
-describe<LocalTestContext>('products reducer', (it) => {
+describe<LocalTestContext>('Products reducer', (it) => {
   beforeEach<LocalTestContext>((context) => {
     const initialState: ProductsSliceState = {
-      products: [
+      items: [
         ...DUMMY_BOOKS,
         {
           id: 'test-id',
@@ -29,7 +29,7 @@ describe<LocalTestContext>('products reducer', (it) => {
 
   it('should handle initial state', () => {
     expect(productsSlice.reducer(undefined, { type: 'unknown' })).toStrictEqual({
-      products: DUMMY_BOOKS,
+      items: DUMMY_BOOKS,
     });
   });
 

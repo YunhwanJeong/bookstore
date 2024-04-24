@@ -1,3 +1,4 @@
+import type { PartialWithRequiredField } from '@/common/utils/types';
 import { Product } from '@/features/products/components';
 import type { IProduct } from '@/features/products/model';
 import type { ReactNode } from 'react';
@@ -5,14 +6,23 @@ import classes from './ProductList.module.css';
 
 interface IProps {
   products: IProduct[];
-  bottomAddOn?: ReactNode;
+  renderBottomAddOn?: (params: PartialWithRequiredField<IProduct, 'id'>) => ReactNode;
 }
 
-function ProductList({ products, bottomAddOn }: IProps) {
+function ProductList({ products, renderBottomAddOn }: IProps) {
   return (
     <ul className={classes.productList}>
-      {products.map(({ id, img, name, price, category }) => {
-        return <Product key={id} img={img} name={name} price={price} category={category} bottomAddOn={bottomAddOn} />;
+      {products.map((product) => {
+        return (
+          <Product
+            key={product.id}
+            img={product.img}
+            name={product.name}
+            price={product.price}
+            category={product.category}
+            bottomAddOn={renderBottomAddOn && renderBottomAddOn(product)}
+          />
+        );
       })}
     </ul>
   );
