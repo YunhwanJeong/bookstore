@@ -17,9 +17,9 @@ describe<LocalTestContext>('Product', (it) => {
         {
           id: 'test-1',
           img: '/test-1.jpg',
-          name: 'The Test Book',
+          name: 'The Test Book 1',
           price: 37,
-          category: 'Mystery',
+          category: 'test-category',
         },
       ],
     };

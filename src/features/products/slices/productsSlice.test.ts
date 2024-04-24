@@ -13,9 +13,9 @@ describe<LocalTestContext>('Products reducer', (it) => {
       items: [
         ...DUMMY_BOOKS,
         {
-          id: 'test-id',
-          img: 'test-img',
-          name: 'test-name',
+          id: 'test-1',
+          img: '/test-1.jpg',
+          name: 'The Test Book 1',
           price: 37,
           category: 'test-category',
         },
@@ -36,7 +36,7 @@ describe<LocalTestContext>('Products reducer', (it) => {
   it('should handle delete product', ({ store }) => {
     expect(selectProducts(store.getState())).toHaveLength(9);
 
-    store.dispatch(deleteProduct('test-id'));
+    store.dispatch(deleteProduct('test-1'));
 
     expect(selectProducts(store.getState())).toHaveLength(8);
   });
