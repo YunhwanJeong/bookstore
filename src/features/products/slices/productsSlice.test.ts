@@ -1,7 +1,7 @@
 import { makeStore, type AppStore } from '@/app/store';
 import { DUMMY_BOOKS } from './constants';
 import type { ProductsSliceState } from './productsSlice';
-import { deleteProduct, productsSlice, selectProducts } from './productsSlice';
+import { addProduct, deleteProduct, productsSlice, selectProducts } from './productsSlice';
 
 interface LocalTestContext {
   store: AppStore;
@@ -39,5 +39,26 @@ describe<LocalTestContext>('Products reducer', (it) => {
     store.dispatch(deleteProduct('test-1'));
 
     expect(selectProducts(store.getState())).toHaveLength(8);
+  });
+
+  it('should add product as the first element', ({ store }) => {
+    const previousState = selectProducts(store.getState());
+
+    expect(previousState).toHaveLength(9);
+
+    store.dispatch(
+      addProduct({
+        id: 'test-2',
+        img: '/test-2.jpg',
+        name: 'The Test Book 2',
+        price: 42,
+        category: 'test-category',
+      }),
+    );
+
+    const updatedState = selectProducts(store.getState());
+
+    expect(updatedState).toHaveLength(10);
+    expect(updatedState[0].id).toBe('test-2');
   });
 });

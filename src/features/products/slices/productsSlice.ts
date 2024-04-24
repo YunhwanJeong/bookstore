@@ -21,6 +21,9 @@ const productsSlice = createSlice({
         state.items.splice(index, 1);
       }
     }),
+    addProduct: create.reducer((state, action: PayloadAction<IProduct>) => {
+      state.items.unshift(action.payload);
+    }),
   }),
   selectors: {
     selectProducts: (products) => products.items,
@@ -29,5 +32,5 @@ const productsSlice = createSlice({
 
 export { productsSlice };
 export const { selectProducts } = productsSlice.selectors;
-export const { deleteProduct } = productsSlice.actions;
+export const { deleteProduct, addProduct } = productsSlice.actions;
 export type { ProductsSliceState };
