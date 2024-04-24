@@ -1,6 +1,6 @@
 import { App } from '@/app';
 import type { AppStore } from '@/app/store';
-import { renderWithProviders } from '@/common/utils/test';
+import { generateTestId, renderWithProviders } from '@/common/utils/test';
 import type { ProductsSliceState } from '@/features/products/slices';
 import { screen } from '@testing-library/react';
 import type { UserEvent } from '@testing-library/user-event';
@@ -35,7 +35,7 @@ describe<LocalTestContext>('Product', (it) => {
   });
 
   it('should be deleted when the delete button is clicked and the user confirms', async ({ user, store }) => {
-    const deleteButton = screen.getByTestId('delete-button-test-1');
+    const deleteButton = screen.getByTestId(generateTestId('product-delete-button', 'test-1'));
     window.confirm = vi.fn(() => true);
 
     await user.click(deleteButton);

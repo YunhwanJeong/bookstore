@@ -1,3 +1,4 @@
+import { generateTestId } from '@/common/utils/test';
 import type { PartialWithRequiredField } from '@/common/utils/types';
 import type { IProduct } from '@/features/products/model';
 import type { MouseEventHandler } from 'react';
@@ -11,7 +12,11 @@ interface IProps {
 
 function ProductDeleteButton({ product, label = 'delete', onClick }: IProps) {
   return (
-    <button data-testid={`delete-button-${product.id}`} className={classes.button} onClick={onClick}>
+    <button
+      data-testid={`${generateTestId('product-delete-button', product.id)}`}
+      className={classes.button}
+      onClick={onClick}
+    >
       {label}
     </button>
   );

@@ -1,1 +1,1 @@
-export { default as renderWithProviders } from './testUtils';
+export { generateTestId, default as renderWithProviders } from './testUtils';
