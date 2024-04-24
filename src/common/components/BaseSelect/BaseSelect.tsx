@@ -1,11 +1,8 @@
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import * as Select from '@radix-ui/react-select';
-import type { ReactNode } from 'react';
-import React from 'react';
+import type { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import classes from './BaseSelect.module.css';
 
-interface IProps {
-  trigger: ReactNode;
+interface IProps extends DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
   groups: {
     label: string;
     items: {
@@ -15,50 +12,28 @@ interface IProps {
   }[];
 }
 
-function BaseSelect({ trigger, groups }: IProps) {
+// At the moment, it is not possible to compose Form with Radix's other form primitives such as Checkbox, Select, etc. They are working on a solution for this.
+// Forwarding the ref is necessary for the form to work correctly.
+// https://www.radix-ui.com/primitives/docs/components/form#composing-with-your-own-components
+// TODO: Change this to use Radix's Select primitive when it is possible to compose it with Form.
+const BaseSelect = forwardRef<HTMLSelectElement, IProps>(({ groups, ...props }, forwardedRef) => {
   return (
-    <Select.Root>
-      <Select.Trigger asChild>{trigger}</Select.Trigger>
-      <Select.Portal>
-        <Select.Content className={classes.selectContent}>
-          <Select.ScrollUpButton className={classes.selectScrollButton}>
-            <ChevronUpIcon />
-          </Select.ScrollUpButton>
-          <Select.Viewport className={classes.selectViewPort}>
-            {groups.map((group, i, arr) => (
-              <>
-                <Select.Group key={group.label}>
-                  {arr.length > 1 && <Select.Label className={classes.selectLabel}>{group.label}</Select.Label>}
-                  {group.items.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </Select.Group>
-                {arr[i + 1] && <Select.Separator className={classes.selectSeperator} />}
-              </>
-            ))}
-          </Select.Viewport>
-          <Select.ScrollDownButton className={classes.selectScrollButton}>
-            <ChevronDownIcon />
-          </Select.ScrollDownButton>
-        </Select.Content>
-      </Select.Portal>
-    </Select.Root>
+    <select className={classes.select} {...props} ref={forwardedRef}>
+      {groups.map((group) => {
+        return (
+          <optgroup key={group.label} label={group.label}>
+            {group.items.map((item) => {
+              return (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              );
+            })}
+          </optgroup>
+        );
+      })}
+    </select>
   );
-}
-
-const SelectItem = React.forwardRef<HTMLDivElement | null, Select.SelectItemProps>(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <Select.Item className={`${classes.selectItem} ${className}`} {...props} ref={forwardedRef}>
-        <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className={classes.selectItemIndicator}>
-          <CheckIcon />
-        </Select.ItemIndicator>
-      </Select.Item>
-    );
-  },
-);
+});
 
 export default BaseSelect;
