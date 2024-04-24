@@ -1,12 +1,12 @@
-import { App } from '@/app';
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Entry from './Entry';
 import './global.css';
 
 ReactDOM.hydrateRoot(
   document.getElementById('root') as HTMLElement,
   <React.StrictMode>
-    <App />
+    <Entry />
   </React.StrictMode>,
 );
