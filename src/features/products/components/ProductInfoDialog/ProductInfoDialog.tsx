@@ -1,3 +1,4 @@
+import currency from '@/app/currency';
 import { useAppDispatch } from '@/app/store/hooks';
 import bookThumbnail from '@/assets/book.png';
 import { BaseDialog, BaseSelect } from '@/common/components';
@@ -105,7 +106,7 @@ function ProductInfoDialog({ selectedProduct, open, onOpenChange }: IProps) {
           </Form.Field>
           <Form.Field className={classes.formField} name="price">
             <div className={classes.formLabelWrapper}>
-              <Form.Label className={classes.formLabel}>Price - $</Form.Label>
+              <Form.Label className={classes.formLabel}>Price - {currency.symbol}</Form.Label>
               <Form.Message className={classes.formMessage} match="valueMissing">
                 Please enter the price
               </Form.Message>

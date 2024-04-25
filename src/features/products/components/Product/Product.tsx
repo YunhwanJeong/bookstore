@@ -1,3 +1,4 @@
+import currency from '@/app/currency';
 import type { IProduct } from '@/features/products/model';
 import type { ReactNode } from 'react';
 import classes from './Product.module.css';
@@ -23,7 +24,7 @@ function Product({ bottomAddOn, onClick, ...product }: IProps) {
         <img className={classes.product__image} src={product.img} alt="product thumbnail" />
         <div className={classes.product__category}>{product.category.label}</div>
         <h3 className={classes.product__name}>{product.name}</h3>
-        <div className={classes.product__price}>{product.price}</div>
+        <div className={classes.product__price}>{`${currency.symbol}${product.price}`}</div>
       </div>
       {bottomAddOn && (
         <>
