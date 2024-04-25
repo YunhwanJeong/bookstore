@@ -30,8 +30,8 @@ describe<LocalTestContext>('MainPage', () => {
           name: 'The Test Book 2',
           price: 42,
           category: {
-            value: 'mystery',
-            label: 'Mystery',
+            value: 'romance',
+            label: 'Romance',
           },
         },
         {
@@ -74,14 +74,41 @@ describe<LocalTestContext>('MainPage', () => {
   });
 
   describe<LocalTestContext>('When clicking book item', (it) => {
-    it('should render the dialog with its information when user clicks a book', async ({ user }) => {
-      const book = screen.getByText('The Test Book 1');
-      await user.click(book);
+    beforeEach<LocalTestContext>(async ({ user }) => {
+      const bookItem = screen.getByText('The Test Book 2');
+      await user.click(bookItem);
+    });
 
+    it('should render the dialog with the correct title', () => {
       expect(screen.getByLabelText('Book Details', { selector: 'div[role="dialog"]' })).toBeInTheDocument();
-      expect(screen.getByLabelText(/name/i)).toHaveValue('The Test Book 1');
-      expect(screen.getByLabelText(/price/i, { exact: false })).toHaveValue(37);
-      expect(screen.getByLabelText(/category/i)).toHaveValue('manga');
+    });
+
+    it('should render a form with the correct fields with default values', () => {
+      expect(screen.getByLabelText(/name/i)).toHaveValue('The Test Book 2');
+      expect(screen.getByLabelText(/price/i, { exact: false })).toHaveValue(42);
+      expect(screen.getByLabelText(/category/i)).toHaveValue('romance');
+      expect(screen.getByLabelText(/description/i)).toHaveValue('');
+    });
+
+    it('should update a book and close the dialog when the form is submitted', async ({ user }) => {
+      const name = screen.getByLabelText(/name/i);
+      const price = screen.getByLabelText(/price/i, { exact: false });
+      const category = screen.getByLabelText(/category/i);
+      const description = screen.getByLabelText(/description/i);
+
+      await user.clear(name);
+      await user.type(name, 'The Test Book 2 Updated');
+      await user.clear(price);
+      await user.type(price, '44');
+      await user.selectOptions(category, 'suspense');
+      await user.clear(description);
+      await user.type(description, 'This is an updated test book');
+
+      const submitButton = screen.getByText(/save/i, { selector: 'button[type=submit]' });
+      await user.click(submitButton);
+
+      expect(screen.getByText('The Test Book 2 Updated')).toBeInTheDocument();
+      expect(() => screen.getByLabelText('Book Details', { selector: 'div[role="dialog"]' })).toThrow();
     });
   });
 
@@ -91,11 +118,11 @@ describe<LocalTestContext>('MainPage', () => {
       await user.click(addABookButton);
     });
 
-    it('should render the dialog with the correct title', async () => {
+    it('should render the dialog with the correct title', () => {
       expect(screen.getByLabelText('Add a Book', { selector: 'div[role="dialog"]' })).toBeInTheDocument();
     });
 
-    it('should render a form with the correct fields', async () => {
+    it('should render a form with the correct fields', () => {
       expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/price/i, { exact: false })).toBeInTheDocument();
       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
