@@ -69,14 +69,12 @@ describe<LocalTestContext>('Products reducer', (it) => {
   });
 
   it('should handle edit product', ({ store }) => {
-    // given
     const previousProducts = selectProducts(store.getState());
     const previousIndex = previousProducts.findIndex((product) => product.id === 'test-1');
 
     expect(previousIndex).toEqual(8);
     expect(previousProducts).toHaveLength(9);
 
-    // when
     store.dispatch(
       editProduct({
         id: 'test-1',
@@ -90,7 +88,6 @@ describe<LocalTestContext>('Products reducer', (it) => {
       }),
     );
 
-    // then
     const updatedProducts = selectProducts(store.getState());
     const updatedIndex = updatedProducts.findIndex((product) => product.id === 'test-1');
     const updatedProduct = updatedProducts[updatedIndex];
