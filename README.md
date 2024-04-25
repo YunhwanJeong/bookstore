@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+# Bookstore
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### A simple bookstore application
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Built with React, TypeScript, Redux, and Vite + Server Side Rendering.
+- Built a Docker image, published it to Google Artifact Registry, and deployed to Google Cloud Run.
+- Tested with Vitest and React Testing Library.
+- Linted with ESLint and Formatted with Prettier.
 
-## Expanding the ESLint configuration
+## Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### [🐤 Ducks/Slices](https://redux.js.org/faq/code-structure#what-should-my-file-structure-look-like-how-should-i-group-my-action-creators-and-reducers-in-my-project-where-should-my-selectors-go)
 
-- Configure the top-level `parserOptions` property like this:
+- public
+- src
+  - **app**: app-wide setup and layout.
+    - layout
+    - store
+  - **assets**: images, fonts, etc.
+  - **common**: truly generic and reusable utilities and components.
+    - components
+    - test-utils
+    - utils
+  - **features**: contain all functionality related to a specific feature.
+    - products
+      - components
+      - hooks
+      - model
+      - slices
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+## State Management
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Used Redux Toolkit to reduce boilerplate code and takes advantage of the [Immer library](https://redux-toolkit.js.org/usage/immer-reducers) to improve code readability.
+- Used [Uncontrolled Form](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) for form handling.
