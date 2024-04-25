@@ -24,6 +24,26 @@ describe<LocalTestContext>('MainPage', () => {
             label: 'Manga',
           },
         },
+        {
+          id: 'test-2',
+          img: '/test-2.jpg',
+          name: 'The Test Book 2',
+          price: 42,
+          category: {
+            value: 'mystery',
+            label: 'Mystery',
+          },
+        },
+        {
+          id: 'test-3',
+          img: '/test-3.jpg',
+          name: 'The Test Book 3',
+          price: 15,
+          category: {
+            value: 'mystery',
+            label: 'Mystery',
+          },
+        },
       ],
     };
 
@@ -37,18 +57,23 @@ describe<LocalTestContext>('MainPage', () => {
     context.user = user;
   });
 
-  describe<LocalTestContext>('MainPage', (it) => {
-    it('should delete when the delete button is clicked and the user confirms', async ({ user, store }) => {
-      const deleteButton = screen.getByTestId(generateTestId('product-delete-button', 'test-1'));
-      window.confirm = vi.fn(() => true);
+  describe<LocalTestContext>('When clicking delete button', (it) => {
+    it('should delete if the user confirms', async ({ user, store }) => {
+      const previousState = selectProducts(store.getState());
+      expect(previousState[1].id).toEqual('test-2');
 
+      const deleteButton = screen.getByTestId(generateTestId('product-delete-button', 'test-2'));
+      window.confirm = vi.fn(() => true);
       await user.click(deleteButton);
 
       expect(window.confirm).toHaveBeenCalled();
-      const state = selectProducts(store.getState());
-      expect(state).toHaveLength(0);
+      const updatedState = selectProducts(store.getState());
+      expect(updatedState[1].id).toEqual('test-3');
+      expect(updatedState).toHaveLength(2);
     });
+  });
 
+  describe<LocalTestContext>('When clicking book item', (it) => {
     it('should render the dialog with its information when user clicks a book', async ({ user }) => {
       const book = screen.getByText('The Test Book 1');
       await user.click(book);
@@ -83,15 +108,15 @@ describe<LocalTestContext>('MainPage', () => {
       const category = screen.getByLabelText(/category/i);
       const description = screen.getByLabelText(/description/i);
 
-      await user.type(name, 'The Test Book 2');
-      await user.type(price, '42');
+      await user.type(name, 'The Test Book 4');
+      await user.type(price, '44');
       await user.selectOptions(category, 'mystery');
       await user.type(description, 'This is a test book');
 
       const submitButton = screen.getByText(/save/i, { selector: 'button[type=submit]' });
       await user.click(submitButton);
 
-      expect(screen.getByText('The Test Book 2')).toBeInTheDocument();
+      expect(screen.getByText('The Test Book 4')).toBeInTheDocument();
       expect(() => screen.getByLabelText('Add a Book', { selector: 'div[role="dialog"]' })).toThrow();
     });
   });
