@@ -1,4 +1,4 @@
-import { renderWithProviders } from '@/common/utils/test';
+import { renderWithProviders } from '@/common/test-utils';
 import { screen } from '@testing-library/react';
 import App from './App';
 

@@ -1,4 +1,4 @@
-import type { PartialWithRequiredField } from '@/common/utils/types';
+import type { PartialWithRequiredField } from '@/common/utils';
 import { Product } from '@/features/products/components';
 import type { IProduct } from '@/features/products/model';
 import type { ReactNode } from 'react';

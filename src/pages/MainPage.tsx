@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import type { PartialWithRequiredField } from '@/common/utils/types';
+import type { PartialWithRequiredField } from '@/common/utils';
 import { ProductDeleteButton, ProductInfoDialog, ProductList } from '@/features/products/components';
 import type { IProduct } from '@/features/products/model';
 import { deleteProduct, selectProducts } from '@/features/products/slices';

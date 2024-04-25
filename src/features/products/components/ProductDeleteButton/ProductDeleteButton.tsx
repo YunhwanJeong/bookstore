@@ -1,5 +1,4 @@
-import { generateTestId } from '@/common/utils/test';
-import type { PartialWithRequiredField } from '@/common/utils/types';
+import { generateTestId, type PartialWithRequiredField } from '@/common/utils';
 import type { IProduct } from '@/features/products/model';
 import type { MouseEventHandler } from 'react';
 import classes from './ProductDeleteButton.module.css';

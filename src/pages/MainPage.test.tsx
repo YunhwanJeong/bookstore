@@ -1,5 +1,6 @@
 import type { AppStore } from '@/app/store';
-import { generateTestId, renderWithProviders } from '@/common/utils/test';
+import { renderWithProviders } from '@/common/test-utils';
+import { generateTestId } from '@/common/utils';
 import { selectProducts, type ProductsSliceState } from '@/features/products/slices';
 import { screen } from '@testing-library/react';
 import type { UserEvent } from '@testing-library/user-event';

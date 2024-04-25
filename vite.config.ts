@@ -14,6 +14,11 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['@testing-library/react', '@testing-library/user-event'],
+    },
+  },
   server: {
     open: true,
   },

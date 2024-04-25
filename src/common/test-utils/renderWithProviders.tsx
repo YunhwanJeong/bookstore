@@ -59,9 +59,4 @@ const renderWithProviders = (ui: ReactElement, extendedRenderOptions: ExtendedRe
   };
 };
 
-const generateTestId = (component: string, identifier = '') => {
-  return `${component}${identifier ? `-${identifier}` : ''}`;
-};
-
-export { generateTestId };
 export default renderWithProviders;
