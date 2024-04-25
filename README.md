@@ -5,7 +5,7 @@
 ## Overview
 
 - Built with React, TypeScript, Redux, and Vite + Server Side Rendering.
-- Built a Docker image, published it to Google Artifact Registry, and deployed to Google Cloud Run.
+- Built a Docker image, published it to Google Artifact Registry, and deployed to Google Cloud Run through GitHub Actions.
 - Tested with Vitest and React Testing Library.
 - Linted with ESLint and Formatted with Prettier.
 
