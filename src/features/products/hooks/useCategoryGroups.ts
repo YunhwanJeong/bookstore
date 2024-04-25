@@ -1,5 +1,7 @@
+import type { IProductCategoryGroup } from '@/features/products/model';
+
 function useCategoryGroups() {
-  const categoryGroups = [
+  const categoryGroups: IProductCategoryGroup[] = [
     {
       label: 'Fiction',
       items: [

@@ -7,20 +7,19 @@ import classes from './ProductList.module.css';
 interface IProps {
   products: IProduct[];
   renderBottomAddOn?: (params: PartialWithRequiredField<IProduct, 'id'>) => ReactNode;
+  onProductClick: (product: IProduct) => () => void;
 }
 
-function ProductList({ products, renderBottomAddOn }: IProps) {
+function ProductList({ products, renderBottomAddOn, onProductClick }: IProps) {
   return (
     <ul className={classes.productList}>
       {products.map((product) => {
         return (
           <Product
+            {...product}
             key={product.id}
-            img={product.img}
-            name={product.name}
-            price={product.price}
-            category={product.category}
             bottomAddOn={renderBottomAddOn && renderBottomAddOn(product)}
+            onClick={onProductClick}
           />
         );
       })}

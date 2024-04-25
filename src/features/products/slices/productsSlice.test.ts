@@ -1,7 +1,7 @@
 import { makeStore, type AppStore } from '@/app/store';
 import { DUMMY_BOOKS } from './constants';
 import type { ProductsSliceState } from './productsSlice';
-import { addProduct, deleteProduct, productsSlice, selectProducts } from './productsSlice';
+import { addProduct, deleteProduct, editProduct, productsSlice, selectProducts } from './productsSlice';
 
 interface LocalTestContext {
   store: AppStore;
@@ -17,7 +17,10 @@ describe<LocalTestContext>('Products reducer', (it) => {
           img: '/test-1.jpg',
           name: 'The Test Book 1',
           price: 37,
-          category: 'test-category',
+          category: {
+            value: 'test-category',
+            label: 'Test Category',
+          },
         },
       ],
     };
@@ -52,7 +55,10 @@ describe<LocalTestContext>('Products reducer', (it) => {
         img: '/test-2.jpg',
         name: 'The Test Book 2',
         price: 42,
-        category: 'test-category',
+        category: {
+          value: 'test-category',
+          label: 'Test Category',
+        },
       }),
     );
 
@@ -60,5 +66,46 @@ describe<LocalTestContext>('Products reducer', (it) => {
 
     expect(updatedState).toHaveLength(10);
     expect(updatedState[0].id).toBe('test-2');
+  });
+
+  it('should handle edit product', ({ store }) => {
+    // given
+    const previousProducts = selectProducts(store.getState());
+    const previousIndex = previousProducts.findIndex((product) => product.id === 'test-1');
+
+    expect(previousIndex).toEqual(8);
+    expect(previousProducts).toHaveLength(9);
+
+    // when
+    store.dispatch(
+      editProduct({
+        id: 'test-1',
+        img: '/test-1.jpg',
+        name: 'The Test Book 1 edit',
+        price: 25.55,
+        category: {
+          value: 'test-category-edit',
+          label: 'Test Category Edit',
+        },
+      }),
+    );
+
+    // then
+    const updatedProducts = selectProducts(store.getState());
+    const updatedIndex = updatedProducts.findIndex((product) => product.id === 'test-1');
+    const updatedProduct = updatedProducts[updatedIndex];
+
+    expect(updatedProduct).toStrictEqual({
+      id: 'test-1',
+      img: '/test-1.jpg',
+      name: 'The Test Book 1 edit',
+      price: 25.55,
+      category: {
+        value: 'test-category-edit',
+        label: 'Test Category Edit',
+      },
+    });
+    expect(updatedIndex).toEqual(8);
+    expect(updatedProducts).toHaveLength(9);
   });
 });

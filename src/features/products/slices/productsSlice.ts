@@ -24,6 +24,12 @@ const productsSlice = createSlice({
     addProduct: create.reducer((state, action: PayloadAction<IProduct>) => {
       state.items.unshift(action.payload);
     }),
+    editProduct: create.reducer((state, action: PayloadAction<IProduct>) => {
+      const index = state.items.findIndex((product) => product.id === action.payload.id);
+      if (index !== -1) {
+        state.items[index] = action.payload;
+      }
+    }),
   }),
   selectors: {
     selectProducts: (products) => products.items,
@@ -32,5 +38,5 @@ const productsSlice = createSlice({
 
 export { productsSlice };
 export const { selectProducts } = productsSlice.selectors;
-export const { deleteProduct, addProduct } = productsSlice.actions;
+export const { deleteProduct, addProduct, editProduct } = productsSlice.actions;
 export type { ProductsSliceState };

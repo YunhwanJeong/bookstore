@@ -1,1 +1,1 @@
-export type { IProduct } from './product';
+export type { IProduct, IProductCategory, IProductCategoryGroup } from './product';

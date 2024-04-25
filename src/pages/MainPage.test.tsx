@@ -1,7 +1,7 @@
 import { App } from '@/app';
 import type { AppStore } from '@/app/store';
 import { generateTestId, renderWithProviders } from '@/common/utils/test';
-import type { ProductsSliceState } from '@/features/products/slices';
+import { selectProducts, type ProductsSliceState } from '@/features/products/slices';
 import { screen } from '@testing-library/react';
 import type { UserEvent } from '@testing-library/user-event';
 
@@ -19,7 +19,10 @@ describe<LocalTestContext>('Product', (it) => {
           img: '/test-1.jpg',
           name: 'The Test Book 1',
           price: 37,
-          category: 'test-category',
+          category: {
+            value: 'test-category',
+            label: 'Test Category',
+          },
         },
       ],
     };
@@ -41,7 +44,7 @@ describe<LocalTestContext>('Product', (it) => {
     await user.click(deleteButton);
 
     expect(window.confirm).toHaveBeenCalled();
-    const state = store.getState().products.items;
+    const state = selectProducts(store.getState());
     expect(state).toHaveLength(0);
   });
 });

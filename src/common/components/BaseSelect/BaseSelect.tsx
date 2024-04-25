@@ -16,9 +16,9 @@ interface IProps extends DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElemen
 // Forwarding the ref is necessary for the form to work correctly.
 // https://www.radix-ui.com/primitives/docs/components/form#composing-with-your-own-components
 // TODO: Change this to use Radix's Select primitive when it is possible to compose it with Form.
-const BaseSelect = forwardRef<HTMLSelectElement, IProps>(({ groups, ...props }, forwardedRef) => {
+const BaseSelect = forwardRef<HTMLSelectElement, IProps>(({ groups, defaultValue, ...props }, forwardedRef) => {
   return (
-    <select className={classes.select} {...props} ref={forwardedRef}>
+    <select className={classes.select} defaultValue={defaultValue} {...props} ref={forwardedRef}>
       {groups.map((group) => {
         return (
           <optgroup key={group.label} label={group.label}>

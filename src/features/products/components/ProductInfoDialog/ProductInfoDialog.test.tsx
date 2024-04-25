@@ -19,7 +19,10 @@ describe<LocalTestContext>('ProductInfoDialog', (it) => {
           img: '/test-1.jpg',
           name: 'The Test Book 1',
           price: 37,
-          category: 'test-category',
+          category: {
+            value: 'test-category',
+            label: 'Test Category',
+          },
         },
       ],
     };
