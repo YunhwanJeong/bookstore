@@ -6,6 +6,6 @@ describe('App', () => {
   it('should have correct initial render', () => {
     renderWithProviders(<App />);
 
-    expect(screen.getByText(/bookstoree/i)).toBeInTheDocument();
+    expect(screen.getByText(/bookstore/i)).toBeInTheDocument();
   });
 });
