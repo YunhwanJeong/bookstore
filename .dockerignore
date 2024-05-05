@@ -20,6 +20,7 @@
 **/*.dbmdl
 **/*.jfm
 **/charts
+**/coverage
 **/docker-compose*
 **/compose.y*ml
 **/Dockerfile*
