@@ -7,7 +7,11 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [{ find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
+    alias: [
+      { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+      { find: /^react-dom$/, replacement: 'react-dom/profiling' },
+      { find: 'scheduler/tracing', replacement: 'scheduler/tracing-profiling' },
+    ],
   },
   css: {
     modules: {
