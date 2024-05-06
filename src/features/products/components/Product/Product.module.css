@@ -12,6 +12,8 @@
 
 .product__image {
   align-self: center;
+  width: 160px;
+  height: 243px;
 }
 
 .product__category {

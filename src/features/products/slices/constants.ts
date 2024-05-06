@@ -1,4 +1,4 @@
-import bookThumbnail from '@/assets/book.png';
+import bookThumbnail from '@/assets/book.webp';
 import type { IProduct } from '@/features/products/model';
 
 const DUMMY_BOOKS: IProduct[] = [

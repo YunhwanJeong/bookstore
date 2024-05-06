@@ -1,6 +1,6 @@
 import currency from '@/app/currency';
 import { useAppDispatch } from '@/app/store/hooks';
-import bookThumbnail from '@/assets/book.png';
+import bookThumbnail from '@/assets/book.webp';
 import { BaseDialog, BaseSelect } from '@/common/components';
 import { useCategoryGroups } from '@/features/products/hooks';
 import type { IProduct } from '@/features/products/model';
@@ -85,7 +85,7 @@ function ProductInfoDialog({ selectedProduct, open, onOpenChange }: IProps) {
       onOpenChange={onOpenChange}
     >
       <div className={classes.formWrapper}>
-        <img src={bookThumbnail} alt="product thumbnail" />
+        <img className={classes.productThumbnail} src={bookThumbnail} alt="product thumbnail" />
         <Form.Root className={classes.formRoot} id={FORM_ID} onSubmit={handleProductInfoDialogFormSubmit}>
           <Form.Field className={classes.formField} name="name">
             <div className={classes.formLabelWrapper}>

@@ -21,6 +21,11 @@
   padding: 50px 100px;
 }
 
+.product-thumbnail {
+  width: 160px;
+  height: 243px;
+}
+
 .form-root {
   display: flex;
   flex-direction: column;
