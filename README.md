@@ -1,6 +1,7 @@
 # Bookstore
 
 ### [A simple bookstore application](https://bookstore-ln5x2jtrpq-pd.a.run.app/)
+- You can Create, Read, Update and Delete books.
 
 ## Overview
 
